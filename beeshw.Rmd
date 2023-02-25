@@ -1,0 +1,296 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+bees <- read.csv('bees.csv')
+bees
+```
+
+```{r}
+filter(bees, yieldpercol > 50)
+view(filter(bees, yieldpercol > 50))
+#do some graph, subset with region/large yield
+```
+
+```{r}
+ggplot(bees, aes(x = state, y = numcol)) +
+  geom_col(fill = "darkgreen") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = numcol)) +
+  geom_col(fill = "purple")
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = numcol, fill = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_point(mapping = aes(x = numcol, y = yieldpercol))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_point(mapping = aes(x = yieldpercol, y = numcol))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = numcol)) +
+  geom_point(mapping = aes(color = Region))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = numcol)) +
+  geom_point(mapping = aes(color = state))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = numcol)) +
+  geom_point(mapping = aes(color = year)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nAllNeonic)) +
+  geom_point(mapping = aes(color = year)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nAllNeonic)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nAllNeonic)) +
+  geom_point(mapping = aes(color = state))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nAllNeonic)) +
+  geom_point(mapping = aes(color = year)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nAllNeonic)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = nAllNeonic, y = numcol)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nCLOTHIANIDIN)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nIMIDACLOPRID)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nTHIAMETHOXAM)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nACETAMIPRID)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nTHIACLOPRID)) +
+  geom_point(mapping = aes(color = Region))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nCLOTHIANIDIN)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nIMIDACLOPRID)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nTHIAMETHOXAM)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nACETAMIPRID)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = nTHIACLOPRID)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = nTHIACLOPRID, y = yieldpercol)) +
+  geom_point(mapping = aes(color = Region)) 
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = numcol, y = nCLOTHIANIDIN)) +
+  geom_point(mapping = aes(color = numcol < 10000))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = yieldpercol, y = numcol)) +
+  geom_point(mapping = aes(color = numcol < 10000))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_smooth(mapping = aes(x = yieldpercol, y = nAllNeonic, linetype = Region)) +
+  geom_point(mapping = aes(x = yieldpercol, y = nAllNeonic, color = Region))
+```
+
+```{r}
+ggplot(subset(bees, yieldpercol > 100), aes(x = yieldpercol, y = numcol)) +
+  geom_point(mapping = aes(color = Region))
+```
+
+```{r}
+ggplot(subset(bees, totalprod > 500000), aes(x = totalprod, y = numcol)) +
+  geom_point(mapping = aes(color = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = totalprod, fill = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = yieldpercol, fill = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = stocks, fill = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = priceperlb, fill = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = prodvalue, fill = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_col(mapping = aes(x = Region, y = nAllNeonic, fill = Region))
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = nAllNeonic)) +
+  geom_col(fill = "deeppink2")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = nCLOTHIANIDIN)) +
+  geom_col(fill = "seagreen3")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = nIMIDACLOPRID)) +
+  geom_col(fill = "hotpink2")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = nTHIAMETHOXAM)) +
+  geom_col(fill = "chartreuse")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = nACETAMIPRID)) +
+  geom_col(fill = "coral4")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = nTHIACLOPRID)) +
+  geom_col(fill = "coral1")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = prodvalue)) +
+  geom_col(fill = "maroon")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = priceperlb)) +
+  geom_col(fill = "coral")
+```
+
+```{r}
+ggplot(bees, aes(x = state, y = priceperlb)) +
+  geom_col(fill = "coral") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = stocks)) +
+  geom_col(fill = "hotpink")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = totalprod)) +
+  geom_col(fill = "darksalmon")
+```
+
+```{r}
+ggplot(bees, aes(x = year, y = yieldpercol)) +
+  geom_col(fill = "seagreen4")
+```
+
+```{r}
+ggplot(bees, aes(x = state, y = yieldpercol)) +
+  geom_col(fill = "gold") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(bees, aes(x = state, y = nAllNeonic)) +
+  geom_col(fill = "gold") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(subset(bees, yieldpercol < 50), aes(x = year , y = yieldpercol)) +
+  geom_point(mapping = aes(color = nAllNeonic, fill = nAllNeonic))
+```
+
+```{r}
+ggplot(data = bees, mapping = aes(x = year, y = numcol)) +
+  geom_point(mapping = aes(color = Region))
+```
+
+```{r}
+ggplot(data = bees) +
+  geom_point(mapping = aes(x = year, y = yieldpercol, color = Region)) +
+  facet_wrap(~ Region, nrow = 3)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
